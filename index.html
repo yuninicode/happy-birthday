@@ -7,7 +7,7 @@
   <style>
     *{box-sizing:border-box}html,body{width:100%;height:100%;margin:0;overflow:hidden;font-family:"Microsoft YaHei UI","PingFang SC",sans-serif;background:#252426}
     button{font:inherit}.scene{position:fixed;inset:0}
-    .scene-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none}.scene-bg.fill{object-fit:cover;filter:blur(18px) brightness(.82);transform:scale(1.06)}.scene-bg.full{object-fit:contain;z-index:1}
+    .scene-bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;user-select:none}.scene-bg.fill{object-fit:cover;filter:blur(18px) brightness(.82);transform:scale(1.06)}.scene-bg.full{object-fit:contain;z-index:1}.scene-bg.mobile{display:none;object-fit:cover;z-index:1}
     #introScene{z-index:20;background:#6e4d78;transition:opacity .55s ease,visibility .55s}
     #musicGate{position:fixed;z-index:21;left:50vw;top:50vh;width:244px;height:176px;transform:translate(-50%,-50%) scale(.88);border:1px solid rgba(255,255,255,.45);border-radius:17px;background:rgba(255,245,255,.25);box-shadow:0 12px 38px rgba(75,34,84,.19),inset 0 1px rgba(255,255,255,.38);backdrop-filter:blur(8px);display:flex;flex-direction:column;align-items:center;justify-content:center;color:white;cursor:pointer;text-shadow:0 1px 4px rgba(94,43,85,.35);opacity:0;visibility:hidden;transition:opacity .48s ease,transform .48s cubic-bezier(.2,.9,.25,1.18),visibility .48s}
     #musicGate.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
@@ -43,12 +43,12 @@
     .option-row{display:flex;align-items:center;gap:7px;width:100%;flex-wrap:nowrap}.option-row button{flex:0 0 auto;white-space:nowrap;word-break:keep-all;line-height:1;padding:7px 10px}.option-label{flex:0 0 42px;width:42px;color:#cbb9e2;font-size:12px}.swatch{display:inline-block;width:14px;height:14px;margin-right:5px;border-radius:50%;vertical-align:-2px;box-shadow:0 0 7px currentColor}
     #completeToast{position:absolute;z-index:15;left:50%;top:31%;transform:translate(-50%,-12px);padding:10px 22px;border:1px solid rgba(255,218,151,.45);border-radius:999px;background:rgba(40,30,36,.82);color:#ffe9bd;font-size:16px;box-shadow:0 0 22px rgba(255,210,109,.24);opacity:0;visibility:hidden;transition:.4s}#completeToast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
     #finalBlessing{position:absolute;z-index:16;left:50%;top:50%;width:min(510px,82vw);min-height:205px;transform:translate(-50%,-50%) scale(.92);padding:30px 42px;border:1px solid rgba(255,255,255,.55);border-radius:17px;background:rgba(255,245,250,.24);box-shadow:0 18px 50px rgba(20,10,24,.28),inset 0 1px rgba(255,255,255,.4);backdrop-filter:blur(13px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;line-height:1.95;text-shadow:0 1px 5px rgba(50,20,45,.6);opacity:0;visibility:hidden;transition:.55s}#finalBlessing.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
-    @media(max-width:700px){.wish-card{width:128px;height:56px}.wish-card .msg{font-size:11px;height:35px}#heroCard{width:310px;height:164px}#heroCard h1{font-size:26px}#enterCake{bottom:20px}}
+    @media(max-width:700px) and (orientation:portrait){.scene-bg.fill,.scene-bg.full{display:none}.scene-bg.mobile{display:block}.wish-card{width:128px;height:56px}.wish-card .msg{font-size:11px;height:35px}#heroCard{width:min(310px,86vw);height:164px}#heroCard h1{font-size:26px}#enterCake{bottom:max(20px,env(safe-area-inset-bottom))}}
   </style>
 </head>
 <body>
   <section id="introScene" class="scene">
-    <img class="scene-bg fill" src="birthday-background.png?v=4" alt=""><img class="scene-bg full" src="birthday-background.png?v=4" alt="">
+    <img class="scene-bg fill" src="birthday-background.png?v=4" alt=""><img class="scene-bg full" src="birthday-background.png?v=4" alt=""><img class="scene-bg mobile" src="birthday-background-mobile.png?v=1" alt="">
     <button id="musicGate"><strong>点击开启音乐</strong><span>开启后陪你走完这段生日 ♫</span></button>
   </section>
   <section id="cakeScene" class="scene" aria-hidden="true">
@@ -71,7 +71,7 @@
   </section>
 
   <section id="wishScene" class="scene">
-    <img class="scene-bg fill" src="birthday-background.png?v=4" alt=""><img class="scene-bg full" src="birthday-background.png?v=4" alt="">
+    <img class="scene-bg fill" src="birthday-background.png?v=4" alt=""><img class="scene-bg full" src="birthday-background.png?v=4" alt=""><img class="scene-bg mobile" src="birthday-background-mobile.png?v=1" alt="">
     <div class="script-bg"><div class="cn">生日快乐</div><div class="en">Happy Birthday</div></div>
     <div id="heartLayer"></div>
     <div id="heroCard">

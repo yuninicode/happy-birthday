@@ -43,7 +43,7 @@
     .option-row{display:flex;align-items:center;gap:7px;width:100%;flex-wrap:nowrap}.option-row button{flex:0 0 auto;white-space:nowrap;word-break:keep-all;line-height:1;padding:7px 10px}.option-label{flex:0 0 42px;width:42px;color:#cbb9e2;font-size:12px}.swatch{display:inline-block;width:14px;height:14px;margin-right:5px;border-radius:50%;vertical-align:-2px;box-shadow:0 0 7px currentColor}
     #completeToast{position:absolute;z-index:15;left:50%;top:31%;transform:translate(-50%,-12px);padding:10px 22px;border:1px solid rgba(255,218,151,.45);border-radius:999px;background:rgba(40,30,36,.82);color:#ffe9bd;font-size:16px;box-shadow:0 0 22px rgba(255,210,109,.24);opacity:0;visibility:hidden;transition:.4s}#completeToast.show{opacity:1;visibility:visible;transform:translate(-50%,0)}
     #finalBlessing{position:absolute;z-index:16;left:50%;top:50%;width:min(510px,82vw);min-height:205px;transform:translate(-50%,-50%) scale(.92);padding:30px 42px;border:1px solid rgba(255,255,255,.55);border-radius:17px;background:rgba(255,245,250,.24);box-shadow:0 18px 50px rgba(20,10,24,.28),inset 0 1px rgba(255,255,255,.4);backdrop-filter:blur(13px);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;color:#fff;line-height:1.95;text-shadow:0 1px 5px rgba(50,20,45,.6);opacity:0;visibility:hidden;transition:.55s}#finalBlessing.show{opacity:1;visibility:visible;transform:translate(-50%,-50%) scale(1)}
-    @media(max-width:700px) and (orientation:portrait){.scene-bg.fill,.scene-bg.full{display:none}.scene-bg.mobile{display:block}.wish-card{width:128px;height:56px}.wish-card .msg{font-size:11px;height:35px}#heroCard{width:min(310px,86vw);height:164px}#heroCard h1{font-size:26px}#enterCake{bottom:max(20px,env(safe-area-inset-bottom))}}
+    @media(max-width:700px) and (orientation:portrait){.scene-bg.fill,.scene-bg.full{display:none}.scene-bg.mobile{display:block}.wish-card{width:86px;height:44px;border-radius:4px}.wish-card .bar{height:15px;padding:1px 5px;font-size:9px}.wish-card .msg{height:28px;padding:1px 3px;font-size:8px;letter-spacing:-.04em}#heroCard{width:min(310px,86vw);height:164px}#heroCard h1{font-size:26px}#enterCake{bottom:max(20px,env(safe-area-inset-bottom))}}
   </style>
 </head>
 <body>
@@ -91,8 +91,8 @@
     function clearTimers(){timers.forEach(clearTimeout);timers=[]}
     function buildHeart(){
       clearTimers();layer.innerHTML='';hero.classList.remove('show');enter.classList.remove('show');wish.style.opacity='1';wish.style.visibility='visible';
-      const count=112,w=innerWidth,h=innerHeight,cardW=w<700?128:158,cardH=w<700?56:66;
-      const scale=Math.min((w*.64-cardW)/32,(h*.76-cardH)/29),cx=w/2,cy=h*.48;
+      const count=112,w=innerWidth,h=innerHeight,isPhone=w<700&&h>w,cardW=isPhone?86:158,cardH=isPhone?44:66;
+      const scale=isPhone?Math.min((w*.94-cardW)/32,(h*.72-cardH)/29):Math.min((w*.64-cardW)/32,(h*.76-cardH)/29),cx=w/2,cy=isPhone?h*.47:h*.48;
       for(let i=0;i<count;i++){
         const t=Math.PI*2*i/count,ring=1-(i%4)*.025;
         const x=cx+(-16*Math.sin(t)**3)*scale*ring;
